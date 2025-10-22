@@ -227,35 +227,24 @@ Below is the pipeline distilled into stages. Items marked 🟦 are automated; �
 
 ``` mermaid
 flowchart TD
-  A[Understand priorities & params.yml]:::auto --> B[FTS: retrieve country & sector codes]:::auto
-  B --> C[FTS: API extract (batched) + early de-nesting]:::auto
-  C --> D[FTS: standardize columns & sector cleaning]:::auto
+  %% ---- classes (blue = automated, purple = manual) ----
+  classDef auto   fill:#e6f2ff,stroke:#4a90e2,stroke-width:1px,color:#0b3660;
+  classDef manual fill:#efe1ff,stroke:#7b61ff,stroke-width:1px,color:#2e1961;
 
-  A --> E[IATI: download/ingest local DB (IatiTables flattened)]:::auto
-  E --> F[IATI: two extractions - Education & Food Security]:::auto
-  F --> G[IATI: process & standardize; create unique ID]:::auto
+  %% ---- pipeline ----
+  A["Understand priorities & params.yml"]:::auto --> 
+  B["FTS: retrieve country & sector codes"]:::auto -->
+  C["FTS: API extract (batched) + early de-nesting"]:::auto -->
+  D["FTS: standardize columns & sector cleaning"]:::auto -->
+  E["Merge with ECW reference tables"]:::auto -->
+  F["QC checks & validation flags"]:::manual -->
+  G["Outputs: parquet/csv & dashboards"]:::auto
 
-  G --> H[First filter: sectors & (IATI) disbursements only]:::auto
-  D --> H
-
-  H --> I[Names processing: source orgs (publisher ↔ transaction_provider)]:::manual
-  I --> J[Names processing: reporting org types fixed]:::manual
-  D --> K[FTS: verify parent/child orgs]:::manual
-
-  J --> L[Second filter: donor/org types (bilateral, multilateral)]:::auto
-  K --> L
-
-  L --> M[Text flags on titles/descriptions (humanitarian, etc.)]:::auto
-  M --> N[Clean recipient names (IATI only)]:::manual
-
-  N --> O[Names matching: align IATI → FTS naming standard]:::manual
-  O --> P[Flag dubious transactions (donor=recipient same cntry/yr)]:::manual
-
-  P --> Q[Merge FTS + IATI; deduplicate & log decisions]:::auto
-  Q --> R[Export final datasets + logs]:::auto
-
-  classDef auto fill:#b3d1ff,stroke:#1c3d8f,color:#1c3d8f;
-  classDef manual fill:#f5c0d9,stroke:#8f1c5b,color:#8f1c5b;
+  %% ---- legend (optional) ----
+  subgraph Legend
+    L1["automated"]:::auto
+    L2["manual review"]:::manual
+  end
 ```
 
 ### 🧩 Key stages
