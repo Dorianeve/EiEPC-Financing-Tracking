@@ -1,0 +1,47 @@
+# Extraction parameters FTS
+fts_date = '2025-10-21' # extraction
+fts_years = c(2021, 2022, 2023, 2024)
+# fts_location_ids = c(1, 206, 212, 171, 234) # second iteration
+# fts_location_ids = c(44, 52, 96, 71, 163, 211) # first iteration
+# fts_location_ids = c(19, 153) # third iteration
+fts_location_ids <- c(44, 52, 96, 71, 163, 211, 1, 206, 212, 171, 234, 19, 153)
+
+fts_EduGlobalClusterId = c(3)
+fts_MLTSGlobalClusterId = c(26479)
+# fts_list_countries = c("Afghanistan", "Somalia", "Sudan", "Occupied Palestinian Territory", "Ukraine") # Second iteration
+# fts_list_countries = c("South Sudan", "Chad", "Nigeria", "Ethiopia", "Haiti", "Congo, The Democratic Republic of the") # First iteration
+# fts_list_countries = c("Bangladesh", "Myanmar") # third iteration
+fts_list_countries <- c(
+  "South Sudan", "Chad", "Nigeria", "Ethiopia", "Haiti", "Congo, The Democratic Republic of the",
+  "Afghanistan", "Somalia", "Sudan", "Occupied Palestinian Territory", "Ukraine",
+  "Bangladesh", "Myanmar"
+)
+
+
+
+# Extraction parameters IATI
+db_path = "data/local db/20250401 iati.sqlite"
+iati_date = '2025-04-01' # Database download date
+iati_start_range = '2020-12-31' # the date range starts one day after
+iati_end_range = '2025-01-01' # the date range ends one day before
+# iati_countries = c('AF', 'SO', 'SD', 'PS', 'UA') # second iteration
+# iati_countries = c('TD', 'ET', 'SS', 'NG', 'CD', 'HT') # first iteration
+# iati_countries <- c('BD', 'MM') # third iteration
+iati_countries <- c(
+  'TD', 'ET', 'SS', 'NG', 'CD', 'HT',  # first iteration
+  'AF', 'SO', 'SD', 'PS', 'UA',        # second iteration
+  'BD', 'MM'                           # third iteration
+)
+iati_sectorcodes = c('11110', '11120', '11130', '11182', '11220', '11230', '11231', '11232', '11240', '11250', '11260','11320', 
+'11321', '11322', '11330', '11420', '11430', '111', '112', '113', '114','72012', '43010', '43081', '51010')
+iati_fs_sectorcode = '52010' 
+
+# ISO3
+# countries = c("AFG", "SOM", "SDN", "PSE", "UKR") # second iteration
+# countries = c("TCD", "ETH", "SSD", "NGA", "COD", "HTI") # first iteration
+# countries = c("BGD", "MMR") # third iteration
+countries <- c(
+  "TCD", "ETH", "SSD", "NGA", "COD", "HTI",  # first iteration
+  "AFG", "SOM", "SDN", "PSE", "UKR",         # second iteration
+  "BGD", "MMR"                               # third iteration
+)

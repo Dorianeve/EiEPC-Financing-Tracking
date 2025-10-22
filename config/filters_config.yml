@@ -1,0 +1,15 @@
+---
+# Filtering parameters IATI ----
+iati_reporting_orgtype_excluded <- "Others" # "Bilateral" "Multilateral""Others"" select the category to exclude
+iati_transactiontype <- 3 # "Disbursement"
+
+# Filtering parameters FTS ----
+fts_donortype_excluded <- "Others" # "Bilateral" "Multilateral""Others"" select the category to exclude
+fts_onboundary_excluded <- "shared" # "shared" "single"
+
+# Common filters ----
+# This excludes from IATI Genderal Budget support and pure Multisector
+# This excludes from FTS pure Multisector
+sector1 <- "Education"
+sector2 <- "Multisector (with Education)"
+

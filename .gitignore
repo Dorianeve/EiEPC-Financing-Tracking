@@ -1,0 +1,18 @@
+# R-related
+.Rproj.user
+.Rhistory
+.RData
+.Ruserdata
+
+# Ignore all CSV and XLSX files globally...
+*.csv
+*.xlsx
+*.sqlite
+
+# ...but keep those in data/utilities/ (and its subfolders)
+!data/utilities/**/*.csv
+!data/utilities/**/*.xlsx
+
+# Ignore the folder "Completed Iterations" (case-insensitive)
+**/[Cc]ompleted Iterations/
+  

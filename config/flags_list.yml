@@ -1,0 +1,88 @@
+# Humanitarian Flag ----
+humanitarian_flag_search_terms <- c(
+  "humanitarian", "humanitaire", "humanitar", "crisis", "crise", "krise", "crises", "emergency", "urgence",
+  "disaster", "desastre", "emergencies", "deplacement", "resilience", "conflict", "conflit", "drought", "secheresse",
+  "vulnerable", "risk", "risque", "closure", "cloture", "drop out", "abandon", "resilient", "violence", "attacks",
+  "attaque", "idp", "refugees", "refugies", "deplaces", "host", "hote", "marginalised", "accueil", "out-of-school",
+  "out of school", "non scolarises", "returnees", "eie", "esu", "preparedness", "preparation", "school feeding",
+  "alimentation scolaire", "psychological", "psychologic", "psychosocial", "catch-up", "rattrapage", "school", "ecole",
+  "protection", "protective", "protecteur", "safe", "sur", "safety", "securite", "insertion", "accelerated", "accelere",
+  "adapted", "adapte", "inclusive", "inclusif", "response", "barriers", "barriere", "mitigation", "continuity",
+  "continuation", "GBV", "violence", "WASH", "assainissement", "adaptation", "DRR", "prevention", "Afar", "Tigray",
+  "Amhara", "BG", "Oromia", "Somali", "Benishangul-Gumuz", "Gambella", "Lake Chad", "Wadi Fira", "Biltine", "Dar Tama",
+  "Iriba", "Megri", "Sila", "Djourf Al Ahmar", "Kimiti", "Ouaddaand", "Abdi", "Assoungha", "Ouara", "Nord-Kivu",
+  "Sud-Kivu", "Ituri", "Maindombe", "North East", "Bomo", "Borno", "Yobe", "Adamawa", "Gombe"
+)
+
+# Language flags ----
+## Humanitarian ----
+humanitarian <- c(
+  "humanitarian", "humanitaire", "humanitar", "crisis", "crise", "krise", 
+  "crises", "emergency", "urgence", "disaster", "desastre", "emergencies", 
+  "drought", "secheresse", "violence", "attacks", "attaque", "flood", "earthquake", 
+  "cyclone", "response"
+)
+
+## Displacement ----
+displacement <- c(
+  "idp", "refugees", "refugies", "deplaces", "host", "hote", 
+  "hotes", "accueil", "returnees", "deplacement", "displaced", "displacement", 
+  "UNHCR", "HCR", "IOM", "OIM"
+)
+
+## Out-of-school ----
+out_school <- c("out-of-school", "out of school", "non scolarises", "descolarise", "descolarises")
+
+## Risk-reduction-mitigation ----
+risk_red_mitigation <- c( "climate change", "changement climatique", "climate adaptation", 
+                          "adaptation climatique", "climate mitigation", "greening education", "climate", 
+                          "climat", "durabilité", "sustainability", "risk", "risque", "preparedness", "preparation", 
+                          "DRR", "mitigation", "prevention", "adaptation", "resilience", "CSSF", "contingence")
+
+## Protection ----
+protection <- c("protection", "protective", "protecteur", "safe", "safety", "securite", "surete")
+
+## MHPSS ----
+mhpss <- c("psychological", "psychologic", "psychosocial", "mental health", "counselor", 
+           "counselors", "counseling")
+
+## Inclusion ----
+inclusion <- c("inclusif", "inclusive", "adapted", "adapte", "disability", "inclusion", 
+               "handicap", "disabled", "barriers", "barriere")
+
+## Gender ----
+gender <- c("gender", "fille", "filles", "girls", "GBV", "equity", "femme", "women")
+
+## EiE ----
+eie <- c("eie", "esu")
+
+## WASH ----
+wash <- c("WASH", "assainissement", "latrine", "latrines", "hygiene")
+
+## Education continuity ----
+edu_continuity <- c("drop out", "abandon", "catch-up", "rattrapage", "reinsertion", 
+                    "continuation", "insertion", "accelerated", "accelere", "alternative", "radio")
+
+## School feeding ----
+school_feeding <- c( "school feeding", "alimentation scolaire", "cantine", 
+                     "malnutrition", "nutrition", "WFP", "PAM")
+
+## Learning ----
+learning <- c("learning", "social emotional learning", "apprentissage", "qualite", 
+              "quality", "outcomes")
+
+## Geographic ----
+geographic <- c(
+  "Afar", "Tigray", "Amhara", "BG", "Oromia", "Somali", "Benishangul-Gumuz", "Gambella",
+  "Lake Chad", "Wadi Fira", "Biltine", "Dar Tama", "Iriba", "Megri", "Sila", "Djourf Al Ahmar", "Lac", 
+  "Kimiti", "Ouaddaand", "Abdi", "Assoungha", "Ouara",
+  "Nord-Kivu", "Sud-Kivu", "Ituri", "Maindombe",
+  "North East", "Bomo", "Borno", "Yobe", "Adamawa", "Gombe")
+
+## Teachers ----
+teachers <- c("teachers", "teacher", "educateur", "educateurs", 
+              "enseignant", "enseignants", "lehrkrafte", "lehrer", "lehrerin")
+
+## Education facilities ----
+edu_facilities <- c("construction", "building", "facilities", "salle de classe", 
+                    "salles de classe", "classroom", "classrooms", "schule")

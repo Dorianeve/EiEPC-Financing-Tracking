@@ -1,0 +1,259 @@
+ID_fts,ISO3,Name_fts,Pcode_fts,IsRegion,ISO2
+1,AFG,Afghanistan,AF,FALSE,AF
+2,ALA,Åland Islands,NA,FALSE,AX
+3,ALB,Albania,NA,FALSE,AL
+4,DZA,Algeria,NA,FALSE,DZ
+5,ASM,American Samoa,NA,FALSE,AS
+6,AND,Andorra,NA,FALSE,AD
+7,AGO,Angola,NA,FALSE,AO
+8,AIA,Anguilla (United Kingdom),NA,FALSE,AI
+9,ATA,Antarctica,NA,FALSE,AQ
+10,ATG,Antigua and Barbuda,NA,FALSE,AG
+11,ARG,Argentina,NA,FALSE,AR
+12,ARM,Armenia,NA,FALSE,AM
+13,ABW,Aruba (Netherlands),NA,FALSE,AW
+14,AUS,Australia,NA,FALSE,AU
+15,AUT,Austria,NA,FALSE,AT
+16,AZE,Azerbaijan,NA,FALSE,AZ
+17,BHS,Bahamas,NA,FALSE,BS
+18,BHR,Bahrain,NA,FALSE,BH
+19,BGD,Bangladesh,BD,FALSE,BD
+20,BRB,Barbados,NA,FALSE,BB
+21,BLR,Belarus,NA,FALSE,BY
+22,BEL,Belgium,NA,FALSE,BE
+23,BLZ,Belize,NA,FALSE,BZ
+24,BEN,Benin,NA,FALSE,BJ
+25,BMU,Bermuda,NA,FALSE,BM
+26,BTN,Bhutan,NA,FALSE,BT
+27,BOL,"Bolivia, Plurinational State of",NA,FALSE,BO
+29,BES,"Bonaire, Saint Eustatius and Saba (The Netherlands)",NA,FALSE,BQ
+28,BIH,Bosnia and Herzegovina,NA,FALSE,BA
+30,BWA,Botswana,NA,FALSE,BW
+31,BVT,Bouvet Island,NA,FALSE,BV
+32,BRA,Brazil,NA,FALSE,BR
+33,IOT,British Indian Ocean Territory,NA,FALSE,IO
+34,BRN,Brunei Darussalam,NA,FALSE,BN
+35,BGR,Bulgaria,NA,FALSE,BG
+36,BFA,Burkina Faso,BF,FALSE,BF
+37,BDI,Burundi,BDI,FALSE,BI
+38,KHM,Cambodia,NA,FALSE,KH
+39,CMR,Cameroon,CM,FALSE,CM
+40,CAN,Canada,NA,FALSE,CA
+41,CPV,Cape Verde,NA,FALSE,CV
+42,CYM,Cayman Islands,NA,FALSE,KY
+43,CAF,Central African Republic,CF,FALSE,CF
+44,TCD,Chad,TCD,FALSE,TD
+45,CHL,Chile,NA,FALSE,CL
+46,CHN,China,NA,FALSE,CN
+47,CXR,Christmas Island,NA,FALSE,CX
+48,CCK,Cocos (Keeling) Islands,NA,FALSE,CC
+49,COL,Colombia,CO,FALSE,CO
+50,COM,Comoros,NA,FALSE,KM
+51,COG,Congo,NA,FALSE,CG
+53,COK,Cook Islands,NA,FALSE,CK
+54,CRI,Costa Rica,NA,FALSE,CR
+55,CIV,Côte d'Ivoire,CI,FALSE,CI
+56,HRV,Croatia,NA,FALSE,HR
+57,CUB,Cuba,NA,FALSE,CU
+58,CUW,Curaçao (Netherlands),NA,FALSE,CW
+59,CYP,Cyprus,NA,FALSE,CY
+60,CZE,Czech Republic,NA,FALSE,CZ
+52,COD,Democratic Republic of the Congo,CD,FALSE,CD
+61,DNK,Denmark,NA,FALSE,DK
+62,DJI,Djibouti,DJ,FALSE,DJ
+63,DMA,Dominica,NA,FALSE,DM
+64,DOM,Dominican Republic,NA,FALSE,DO
+65,ECU,Ecuador,NA,FALSE,EC
+66,EGY,Egypt,NA,FALSE,EG
+67,SLV,El Salvador,SV,FALSE,SV
+68,GNQ,Equatorial Guinea,NA,FALSE,GQ
+69,ERI,Eritrea,NA,FALSE,ER
+70,EST,Estonia,NA,FALSE,EE
+215,SWZ,Eswatini,NA,FALSE,SZ
+71,ETH,Ethiopia,ET,FALSE,ET
+72,FLK,Falkland Islands (Malvinas),NA,FALSE,FK
+73,FRO,Faroe Islands,NA,FALSE,FO
+74,FJI,Fiji,NA,FALSE,FJ
+75,FIN,Finland,NA,FALSE,FI
+76,FRA,France,NA,FALSE,FR
+77,GUF,French Guiana,NA,FALSE,GF
+78,PYF,French Polynesia,NA,FALSE,PF
+79,ATF,French Southern Territories,NA,FALSE,TF
+80,GAB,Gabon,NA,FALSE,GA
+81,GMB,Gambia,NA,FALSE,GM
+82,GEO,Georgia,NA,FALSE,GE
+83,DEU,Germany,NA,FALSE,DE
+84,GHA,Ghana,NA,FALSE,GH
+85,GIB,Gibraltar,NA,FALSE,GI
+251,NA,Global,NA,FALSE,
+86,GRC,Greece,NA,FALSE,GR
+87,GRL,Greenland,NA,FALSE,GL
+88,GRD,Grenada,NA,FALSE,GD
+89,GLP,Guadeloupe (France),NA,FALSE,GP
+90,GUM,Guam,NA,FALSE,GU
+91,GTM,Guatemala,GT,FALSE,GT
+92,GGY,Guernsey,NA,FALSE,GG
+93,GIN,Guinea,NA,FALSE,GN
+94,GNB,Guinea-Bissau,NA,FALSE,GW
+95,GUY,Guyana,NA,FALSE,GY
+96,HTI,Haiti,HT,FALSE,HT
+97,HMD,Heard Island and McDonald Islands,NA,FALSE,HM
+98,VAT,Holy See (Vatican City State),NA,FALSE,VA
+99,HND,Honduras,HN,FALSE,HN
+100,HKG,Hong Kong,NA,FALSE,HK
+101,HUN,Hungary,NA,FALSE,HU
+102,ISL,Iceland,NA,FALSE,IS
+103,IND,India,NA,FALSE,IN
+104,IDN,Indonesia,NA,FALSE,ID
+105,IRN,"Iran, Islamic Republic of",NA,FALSE,IR
+106,IRQ,Iraq,IQ,FALSE,IQ
+107,IRL,Ireland,NA,FALSE,IE
+108,IMN,Isle of Man,NA,FALSE,IM
+109,ISR,Israel,NA,FALSE,IL
+110,ITA,Italy,NA,FALSE,IT
+111,JAM,Jamaica,NA,FALSE,JM
+112,JPN,Japan,NA,FALSE,JP
+113,JEY,Jersey,NA,FALSE,JE
+114,JOR,Jordan,NA,FALSE,JO
+115,KAZ,Kazakhstan,NA,FALSE,KZ
+116,KEN,Kenya,KE,FALSE,KE
+117,KIR,Kiribati,NA,FALSE,KI
+118,PRK,"Korea, Democratic People's Republic of",KP,FALSE,KP
+119,KOR,"Korea, Republic of",NA,FALSE,KR
+120,KWT,Kuwait,NA,FALSE,KW
+121,KGZ,Kyrgyzstan,NA,FALSE,KG
+122,LAO,Lao People's Democratic Republic,NA,FALSE,LA
+123,LVA,Latvia,NA,FALSE,LV
+124,LBN,Lebanon,LB,FALSE,LB
+125,LSO,Lesotho,NA,FALSE,LS
+126,LBR,Liberia,NA,FALSE,LR
+127,LBY,Libya,LY,FALSE,LY
+128,LIE,Liechtenstein,NA,FALSE,LI
+129,LTU,Lithuania,NA,FALSE,LT
+130,LUX,Luxembourg,NA,FALSE,LU
+131,MAC,Macao,NA,FALSE,MO
+133,MDG,Madagascar,MG,FALSE,MG
+134,MWI,Malawi,MW,FALSE,MW
+135,MYS,Malaysia,NA,FALSE,MY
+136,MDV,Maldives,NA,FALSE,MV
+137,MLI,Mali,ML,FALSE,ML
+138,MLT,Malta,NA,FALSE,MT
+139,MHL,Marshall Islands,NA,FALSE,MH
+140,MTQ,Martinique (France),NA,FALSE,MQ
+141,MRT,Mauritania,MR,FALSE,MR
+142,MUS,Mauritius,NA,FALSE,MU
+143,MYT,Mayotte,NA,FALSE,YT
+144,MEX,Mexico,NA,FALSE,MX
+145,FSM,"Micronesia, Federated States of",NA,FALSE,FM
+146,MDA,"Moldova, Republic of",NA,FALSE,MD
+147,MCO,Monaco,NA,FALSE,MC
+148,MNG,Mongolia,NA,FALSE,MN
+149,MNE,Montenegro,NA,FALSE,ME
+150,MSR,Montserrat,NA,FALSE,MS
+151,MAR,Morocco,NA,FALSE,MA
+152,MOZ,Mozambique,MZ,FALSE,MZ
+153,MMR,Myanmar,MMR,FALSE,MM
+154,NAM,Namibia,NA,FALSE,NA
+155,NRU,Nauru,NA,FALSE,NR
+156,NPL,Nepal,NP,FALSE,NP
+157,NLD,Netherlands,NA,FALSE,NL
+158,ANT,Netherlands Antilles,NA,FALSE,
+159,NCL,New Caledonia,NA,FALSE,NC
+160,NZL,New Zealand,NA,FALSE,NZ
+161,NIC,Nicaragua,NA,FALSE,NI
+162,NER,Niger,NER,FALSE,NE
+163,NGA,Nigeria,NG,FALSE,NG
+164,NIU,Niue,NA,FALSE,NU
+165,NFK,Norfolk Island,NA,FALSE,NF
+166,MNP,Northern Mariana Islands,NA,FALSE,MP
+132,MKD,"North Macedonia, Republic of",NA,FALSE,MK
+167,NOR,Norway,NA,FALSE,NO
+171,PSE,Occupied Palestinian Territory,PS,FALSE,PS
+168,OMN,Oman,NA,FALSE,OM
+169,PAK,Pakistan,NA,FALSE,PK
+170,PLW,Palau,NA,FALSE,PW
+172,PAN,Panama,NA,FALSE,PA
+173,PNG,Papua New Guinea,NA,FALSE,PG
+174,PRY,Paraguay,NA,FALSE,PY
+175,PER,Peru,PE,FALSE,PE
+176,PHL,Philippines,NA,FALSE,PH
+177,PCN,Pitcairn,NA,FALSE,PN
+178,POL,Poland,NA,FALSE,PL
+179,PRT,Portugal,NA,FALSE,PT
+180,PRI,Puerto Rico (United States),NA,FALSE,PR
+181,QAT,Qatar,NA,FALSE,QA
+25928035,NA,Region - Asia and the Pacific,NA,TRUE,
+25928036,NA,Region - Europe,NA,TRUE,
+25928037,NA,Region - Latin America and the Caribbean,NA,TRUE,
+25928038,NA,Region - Middle East and Northern Africa,NA,TRUE,
+25928039,NA,Region - Southern and Eastern Africa,NA,TRUE,
+25928040,NA,Region - West and Central Africa,NA,TRUE,
+182,REU,Réunion,NA,FALSE,RE
+183,ROU,Romania,NA,FALSE,RO
+184,RUS,Russian Federation,NA,FALSE,RU
+185,RWA,Rwanda,NA,FALSE,RW
+186,BLM,Saint Barthélemy (France),NA,FALSE,BL
+187,SHN,"Saint Helena, Ascension and Tristan da Cunha",NA,FALSE,SH
+188,KNA,Saint Kitts and Nevis,NA,FALSE,KN
+189,LCA,Saint Lucia,NA,FALSE,LC
+190,MAF,Saint Martin (France),NA,FALSE,MF
+191,SPM,Saint Pierre and Miquelon,NA,FALSE,PM
+192,VCT,Saint Vincent and the Grenadines,NA,FALSE,VC
+193,WSM,Samoa,NA,FALSE,WS
+194,SMR,San Marino,NA,FALSE,SM
+195,STP,São Tomé and Príncipe,NA,FALSE,RW
+196,SAU,Saudi Arabia,NA,FALSE,SA
+197,SEN,Senegal,SN,FALSE,SN
+198,SRB,Serbia,NA,FALSE,RS
+25724802,SCG,Serbia and Montenegro (until 2006-2009),NA,FALSE,
+199,SYC,Seychelles,NA,FALSE,SC
+200,SLE,Sierra Leone,NA,FALSE,SL
+201,SGP,Singapore,NA,FALSE,SG
+202,SXM,Sint Maarten (Dutch part),NA,FALSE,SX
+203,SVK,Slovakia,NA,FALSE,SK
+204,SVN,Slovenia,NA,FALSE,SI
+205,SLB,Solomon Islands,NA,FALSE,SB
+206,SOM,Somalia,SO,FALSE,SO
+207,ZAF,South Africa,NA,FALSE,ZA
+208,SGS,South Georgia and the South Sandwich Islands,NA,FALSE,GS
+211,SSD,South Sudan,SS,FALSE,SS
+209,ESP,Spain,NA,FALSE,ES
+210,LKA,Sri Lanka,NA,FALSE,LK
+212,SDN,Sudan,SD,FALSE,SD
+213,SUR,Suriname,NA,FALSE,SR
+214,SJM,Svalbard and Jan Mayen,NA,FALSE,SJ
+216,SWE,Sweden,NA,FALSE,SE
+217,CHE,Switzerland,NA,FALSE,CH
+218,SYR,Syrian Arab Republic,SY,FALSE,SY
+219,TWN,"Taiwan, Province of China",NA,FALSE,TW
+220,TJK,Tajikistan,NA,FALSE,TJ
+221,TZA,"Tanzania, United Republic of",NA,FALSE,TZ
+222,THA,Thailand,NA,FALSE,TH
+223,TLS,Timor-Leste,NA,FALSE,TL
+224,TGO,Togo,NA,FALSE,TG
+225,TKL,Tokelau,NA,FALSE,TK
+226,TON,Tonga,NA,FALSE,TO
+227,TTO,Trinidad and Tobago,NA,FALSE,TT
+228,TUN,Tunisia,NA,FALSE,TN
+229,TUR,Türkiye,NA,FALSE,TR
+230,TKM,Turkmenistan,NA,FALSE,TM
+231,TCA,Turks and Caicos Islands,NA,FALSE,TC
+232,TUV,Tuvalu,NA,FALSE,TV
+233,UGA,Uganda,NA,FALSE,UG
+234,UKR,Ukraine,UA,FALSE,UA
+235,ARE,United Arab Emirates,NA,FALSE,AE
+236,GBR,United Kingdom,NA,FALSE,GB
+237,USA,United States,NA,FALSE,US
+238,UMI,United States Minor Outlying Islands,NA,FALSE,UM
+239,URY,Uruguay,NA,FALSE,UY
+240,UZB,Uzbekistan,NA,FALSE,UZ
+241,VUT,Vanuatu,NA,FALSE,VU
+242,VEN,"Venezuela, Bolivarian Republic of",VE,FALSE,VE
+243,VNM,Viet Nam,NA,FALSE,VN
+244,VGB,"Virgin Islands, British",NA,FALSE,VG
+245,VIR,"Virgin Islands, U.S.",NA,FALSE,VI
+246,WLF,Wallis and Futuna,NA,FALSE,WF
+247,ESH,"Western Sahara, non-self-governing territory",NA,FALSE,EH
+248,YEM,Yemen,YEM,FALSE,YE
+249,ZMB,Zambia,ZMB,FALSE,ZM
+250,ZWE,Zimbabwe,ZW,FALSE,ZW
