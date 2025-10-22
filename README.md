@@ -227,20 +227,45 @@ Below is the pipeline distilled into stages. Items marked 🟦 are automated; �
 
 ``` mermaid
 flowchart TD
-  %% ---- classes (blue = automated, purple = manual) ----
+  %% ==== CLASS DEFINITIONS ====
   classDef auto   fill:#e6f2ff,stroke:#4a90e2,stroke-width:1px,color:#0b3660;
   classDef manual fill:#efe1ff,stroke:#7b61ff,stroke-width:1px,color:#2e1961;
 
-  %% ---- pipeline ----
+  %% ==== FTS BRANCH ====
   A["Understand priorities & params.yml"]:::auto --> 
   B["FTS: retrieve country & sector codes"]:::auto -->
   C["FTS: API extract (batched) + early de-nesting"]:::auto -->
-  D["FTS: standardize columns & sector cleaning"]:::auto -->
-  E["Merge with ECW reference tables"]:::auto -->
-  F["QC checks & validation flags"]:::manual -->
-  G["Outputs: parquet/csv & dashboards"]:::auto
+  D["FTS: standardize columns & sector cleaning"]:::auto
 
-  %% ---- legend (optional) ----
+  %% ==== IATI BRANCH ====
+  A --> E["IATI: download/ingest local DB (IatiTables flattened)"]:::auto -->
+  F["IATI: two extractions - Education & Food Security"]:::auto -->
+  G["IATI: process & standardize; create unique ID"]:::auto
+
+  %% ==== FIRST FILTER ====
+  G --> H["First filter: sectors & (IATI) disbursements only"]:::auto
+  D --> H
+
+  %% ==== NAME PROCESSING ====
+  H --> I["Names processing: source orgs (publisher ↔ transaction_provider)"]:::manual -->
+  J["Names processing: reporting org types fixed"]:::manual
+  D --> K["FTS: verify parent/child orgs"]:::manual
+
+  %% ==== SECOND FILTER ====
+  J --> L["Second filter: donor/org types (bilateral, multilateral)"]:::auto
+  K --> L
+
+  %% ==== TEXT FLAGS & CLEANING ====
+  L --> M["Text flags on titles/descriptions (humanitarian, etc.)"]:::auto -->
+  N["Clean recipient names (IATI only)"]:::manual
+
+  %% ==== MATCHING & FINAL MERGE ====
+  N --> O["Names matching: align IATI → FTS naming standard"]:::manual -->
+  P["Flag dubious transactions (donor=recipient same cntry/yr)"]:::manual -->
+  Q["Merge FTS + IATI; deduplicate & log decisions"]:::auto -->
+  R["Export final datasets + logs"]:::auto
+
+  %% ==== LEGEND ====
   subgraph Legend
     L1["automated"]:::auto
     L2["manual review"]:::manual
