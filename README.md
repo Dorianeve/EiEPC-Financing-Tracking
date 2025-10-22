@@ -226,36 +226,28 @@ Key outputs are written to `data/clean/` and `data/analysis/` include:
 Below is the pipeline distilled into stages. Items marked 🟦 are automated; 🟪 require manual review (as per protocol).
 
 ``` mermaid
-flowchart TD
+flowchart LR
   %% ==== CLASS DEFINITIONS ====
   classDef darkblue fill:#003366,stroke:#003366,color:#ffffff,fontWeight:bold;
   classDef lightblue fill:#66b3ff,stroke:#3399ff,color:#000000;
   classDef pink fill:#d98cb3,stroke:#b84d7a,color:#000000;
 
-  %% ==== STAGE 1: EXTRACTION ====
+  %% ==== FIRST ROW ====
   A["Extraction<br/>• FTS (API)<br/>• IATI (local DB)"]:::darkblue --> 
   B["Processing<br/>• IATI merging food security & education<br/>• IATI cleaning structure<br/>• FTS cleaning structure"]:::darkblue -->
-
-  %% ==== STAGE 2: FILTER 1 ====
   C["First Filtering Layer<br/>• TransactionType (IATI)<br/>• Sector (IATI / FTS)"]:::lightblue -->
+  D["Names processing<br/>• IATI ReportingOrg & TransactionOrg<br/>• FTS SourceOrganization parent/child"]:::pink
 
-  %% ==== STAGE 3: NAME PROCESSING ====
-  D["Names processing<br/>• IATI ReportingOrg & TransactionOrg<br/>• FTS SourceOrganization parent/child"]:::pink -->
-
-  %% ==== STAGE 4: FILTER 2 + FLAGGING ====
-  C --> E["Second Filtering Layer<br/>• IATI ReportingOrgType / TransactionOrgType<br/>• FTS DonorType"]:::lightblue -->
+  %% ==== SECOND ROW ====
+  D --> E["Second Filtering Layer<br/>• IATI ReportingOrgType / TransactionOrgType<br/>• FTS DonorType"]:::lightblue -->
   F["Flagging<br/>• IATI and FTS through same language-based flags"]:::lightblue -->
+  G["Recipient names processing<br/>• IATI identification and cleaning of bilateral/institutional recipients"]:::pink -->
+  H["Names matching<br/>• Matching IATI names to FTS SourceOrganizations"]:::pink
 
-  %% ==== STAGE 5: RECIPIENTS + MATCHING ====
-  F --> G["Recipient names processing<br/>• IATI identification and cleaning of bilateral/institutional recipients"]:::pink -->
-  H["Names matching<br/>• Matching IATI names to FTS SourceOrganizations"]:::pink -->
-
-  %% ==== STAGE 6: FINAL CHECKS + MERGE ====
+  %% ==== THIRD ROW ====
   H --> I["Flag dubious transactions<br/>• IATI flag of 'dubious' transactions"]:::lightblue -->
   J["Merging<br/>• FTS–IATI merged<br/>• Check for double-reported transactions (overlaps)"]:::pink -->
-
-  %% ==== STAGE 7: OUTPUT ====
-  J --> K["Aggregated dataset ready for analysis"]:::darkblue
+  K["Aggregated dataset ready for analysis"]:::darkblue
 
   %% ==== LEGEND ====
   subgraph Legend
