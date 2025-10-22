@@ -228,47 +228,40 @@ Below is the pipeline distilled into stages. Items marked 🟦 are automated; �
 ``` mermaid
 flowchart TD
   %% ==== CLASS DEFINITIONS ====
-  classDef auto   fill:#e6f2ff,stroke:#4a90e2,stroke-width:1px,color:#0b3660;
-  classDef manual fill:#efe1ff,stroke:#7b61ff,stroke-width:1px,color:#2e1961;
+  classDef darkblue fill:#003366,stroke:#003366,color:#ffffff,fontWeight:bold;
+  classDef lightblue fill:#66b3ff,stroke:#3399ff,color:#000000;
+  classDef pink fill:#d98cb3,stroke:#b84d7a,color:#000000;
 
-  %% ==== FTS BRANCH ====
-  A["Understand priorities & params.yml"]:::auto --> 
-  B["FTS: retrieve country & sector codes"]:::auto -->
-  C["FTS: API extract (batched) + early de-nesting"]:::auto -->
-  D["FTS: standardize columns & sector cleaning"]:::auto
+  %% ==== STAGE 1: EXTRACTION ====
+  A["Extraction<br/>• FTS (API)<br/>• IATI (local DB)"]:::darkblue --> 
+  B["Processing<br/>• IATI merging food security & education<br/>• IATI cleaning structure<br/>• FTS cleaning structure"]:::darkblue -->
 
-  %% ==== IATI BRANCH ====
-  A --> E["IATI: download/ingest local DB (IatiTables flattened)"]:::auto -->
-  F["IATI: two extractions - Education & Food Security"]:::auto -->
-  G["IATI: process & standardize; create unique ID"]:::auto
+  %% ==== STAGE 2: FILTER 1 ====
+  C["First Filtering Layer<br/>• TransactionType (IATI)<br/>• Sector (IATI / FTS)"]:::lightblue -->
 
-  %% ==== FIRST FILTER ====
-  G --> H["First filter: sectors & (IATI) disbursements only"]:::auto
-  D --> H
+  %% ==== STAGE 3: NAME PROCESSING ====
+  D["Names processing<br/>• IATI ReportingOrg & TransactionOrg<br/>• FTS SourceOrganization parent/child"]:::pink -->
 
-  %% ==== NAME PROCESSING ====
-  H --> I["Names processing: source orgs (publisher ↔ transaction_provider)"]:::manual -->
-  J["Names processing: reporting org types fixed"]:::manual
-  D --> K["FTS: verify parent/child orgs"]:::manual
+  %% ==== STAGE 4: FILTER 2 + FLAGGING ====
+  C --> E["Second Filtering Layer<br/>• IATI ReportingOrgType / TransactionOrgType<br/>• FTS DonorType"]:::lightblue -->
+  F["Flagging<br/>• IATI and FTS through same language-based flags"]:::lightblue -->
 
-  %% ==== SECOND FILTER ====
-  J --> L["Second filter: donor/org types (bilateral, multilateral)"]:::auto
-  K --> L
+  %% ==== STAGE 5: RECIPIENTS + MATCHING ====
+  F --> G["Recipient names processing<br/>• IATI identification and cleaning of bilateral/institutional recipients"]:::pink -->
+  H["Names matching<br/>• Matching IATI names to FTS SourceOrganizations"]:::pink -->
 
-  %% ==== TEXT FLAGS & CLEANING ====
-  L --> M["Text flags on titles/descriptions (humanitarian, etc.)"]:::auto -->
-  N["Clean recipient names (IATI only)"]:::manual
+  %% ==== STAGE 6: FINAL CHECKS + MERGE ====
+  H --> I["Flag dubious transactions<br/>• IATI flag of 'dubious' transactions"]:::lightblue -->
+  J["Merging<br/>• FTS–IATI merged<br/>• Check for double-reported transactions (overlaps)"]:::pink -->
 
-  %% ==== MATCHING & FINAL MERGE ====
-  N --> O["Names matching: align IATI → FTS naming standard"]:::manual -->
-  P["Flag dubious transactions (donor=recipient same cntry/yr)"]:::manual -->
-  Q["Merge FTS + IATI; deduplicate & log decisions"]:::auto -->
-  R["Export final datasets + logs"]:::auto
+  %% ==== STAGE 7: OUTPUT ====
+  J --> K["Aggregated dataset ready for analysis"]:::darkblue
 
   %% ==== LEGEND ====
   subgraph Legend
-    L1["automated"]:::auto
-    L2["manual review"]:::manual
+    L1["Automated steps"]:::darkblue
+    L2["Manual review steps"]:::pink
+    L3["Filtering stages"]:::lightblue
   end
 ```
 
