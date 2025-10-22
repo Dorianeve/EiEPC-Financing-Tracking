@@ -240,13 +240,13 @@ flowchart TD
 
   %% ==== ROW 2 ====
   E["Second Filtering Layer<br/>• IATI ReportingOrgType / TransactionOrgType<br/>• FTS DonorType"]:::lightblue -->
-  F["Flagging<br/>• IATI and FTS through same language-based flags"]:::lightblue -->
+  F["Flagging<br/>• IATI and FTS through same language-based flags"]:::darkblue -->
   G["Recipient names processing<br/>• IATI identification and cleaning of bilateral/institutional recipients"]:::pink -->
   H["Names matching<br/>• Matching IATI names to FTS SourceOrganizations"]:::pink
 
   %% ==== ROW 3 ====
-  I["Flag dubious transactions<br/>• IATI flag of 'dubious' transactions"]:::lightblue -->
-  J["Merging<br/>• FTS–IATI merged<br/>• Check for double-reported transactions (overlaps)"]:::pink -->
+  I["Flag dubious transactions<br/>• IATI flag of 'dubious' transactions"]:::darkblue -->
+  J["Merging<br/>• FTS–IATI merged<br/>• ECW in FTS filtered out automatically (overlaps)"]:::darkblue -->
   K["Aggregated dataset ready for analysis"]:::darkblue
 
   %% ==== FLOW CONNECTIONS BETWEEN ROWS ====
