@@ -5,12 +5,13 @@ This repository contains an R-based, reproducible workflow to **extract, clean, 
 ## 🧭 Scope & Objectives
 
 -   Retrieve **FTS** data via API and **IATI** transactions via local database export.
--   Standardize, clean, and **harmonize** sectors, organizations, and countries.
+-   Standardize, clean, and **harmonize** sectors, organizations, and countries names.
 -   Apply **two-layer filtering** (sector/flow type, then donor/org type).
 -   Apply **flags** (humanitarian, displacement, out-of-school, DRR, MHPSS, inclusion, gender, EiE, WASH, continuity, school feeding, learning, teachers, crisis geographies, facilities).
--   **De-duplicate** and **merge** FTS + IATI with auditable IDs and logs.
+-   **De-duplicate** and **merge** FTS + IATI with auditable IDs and logs (`18_fts_iati_merging.R`).
+-   Default selection of ECW transactions on IATI (`18_fts_iati_merging_alternative.R`).
 
-These steps mirror the protocol’s stages and constraints (e.g., FTS API v1 limits, nested/“On Boundary” results; IATI non-uniform sector codes, local SQL performance, name cleaning & correspondence tables).
+These steps mirror the protocol’s stages and constraints (e.g., FTS API v1 limits, nested/“On Boundary” results; IATI non-uniform names and codes, local SQL performance, name cleaning & correspondence tables).
 
 ## 🧱 Repository Structure
 
@@ -109,6 +110,7 @@ These steps mirror the protocol’s stages and constraints (e.g., FTS API v1 lim
         ├── 16_iati_matching_names_to_fts.R
         ├── 17_iati_dubious_flag.R
         ├── 18_fts_iati_merging.R
+        ├── 18_fts_iati_merging_alternative.R
         └── 19_create_complete_dataset.R
 ```
 
@@ -116,7 +118,9 @@ These steps mirror the protocol’s stages and constraints (e.g., FTS API v1 lim
 
 #### Prep steps
 
-Download the database IatiTables from this link [`https://datasette.tables.iatistandard.org/iati.db`](https://datasette.tables.iatistandard.org/iati.db) and put it in the folder `data/local db/`
+Download the whole repo on the local system.
+
+Download the whole database IatiTables from this link [`https://datasette.tables.iatistandard.org/iati.db`](https://datasette.tables.iatistandard.org/iati.db) and put it in the folder `data/local db/`
 
 ### 🔐 Configuration
 
@@ -263,26 +267,36 @@ flowchart TD
 
 ### 🧩 Key stages
 
+It is recommended to run the code in three stages:
+
+-   `01 extraction.R`
+
+-   `02 processing.R`
+
+-   `03 analysis.R`
+
 The code is structured to pause when manual verification and updates are needed. When the verification is done and the files are updated, just click `ok` in the popup to prosecute with executing the scripts.
 
--   **FTS extraction (API v1, batched)**: Respect call limits; pre-clean nested structures so they can be saved efficiently. Handle **“On Boundary”** caveats where flows with multiple values are included in search results but excluded from totals for any single parameter. FTS extracts based on the parameters given in the config file. Meaning that if you need latest data form other countries it needs to be re-extracted.\
+-   **FTS extraction (API v1, batched)**: Respect call limits; pre-clean nested structures so they can be saved efficiently. Handle **“On Boundary”** caveats where flows with multiple values are included in search results. Please note that FTS extracts based on the parameters given in the config file. Meaning that if you need latest data form other countries it needs to be re-extracted.
 
--   **IATI extraction (local)**: Use a local SQLlite db copy of **IatiTables** (flattened). Join `transaction_breakdown`, `trans`, `activity` with proper keys. Run **two passes** (Education; Food Security) and then text-filter for education-relevant records from Food Security. Expect heavy joins for multi-year, multi-country pulls. IATI extracts based on the sector and year parameters given. As it is very time consuming to extract IATI data, all the countries are included. To iterate over a new country, it is not necessary to extract again.
+-   **IATI extraction (local)**: Use a local SQLlite db copy of **IatiTables** (flattened). Join `transaction_breakdown`, `trans`, `activity` with proper keys. Run **two passes** (Education; Food Security) and then text-filter for education-relevant records from Food Security. Expect heavy joins for multi-year. IATI extracts based on the sector and year parameters given. As it is very time consuming to extract IATI data, all the countries are included. To iterate over a new country, it is not necessary to extract again as countries are filtered in the processing phase.
 
--   **Identifiers**: To check duplicated transactions a new identifier as created, as the IATI transaction identifier varies over versions of the database
+-   **Identifiers**: To check duplicated transactions a new identifier as created, as the IATI transaction identifier varies over versions of the database (this is not necessary if there is no manual duplicates check, but left here as it is a unique ID).
 
-    -   IATI ID: `ActivityID_ReportingOrgID_RecipientCountry_SectorCode_RecipientOrgName_TransactionDate_Amount`\
-    -   FTS ID: `SourceOrgID_ISO3_Sector_DestinationOrgID_Date_AmountUSD`\
+    -   IATI ID: `ActivityID_ReportingOrgID_RecipientCountry_SectorCode_RecipientOrgName_TransactionDate_Amount`
+    -   FTS ID: `SourceOrgID_ISO3_Sector_DestinationOrgID_Date_AmountUSD`
 
--   **Filtering strategy**: First by **sector/flow type** (retain IATI disbursements only), then by **donor/org type** after name normalization later in the flow. It is structured this way as the main difficulty of IATI is the name inconsistencies. This should be manually verified.\
+-   **Filtering strategy**: First by **sector/flow type** (retain IATI disbursements only), then by **donor/org type** after name normalization later in the flow. It is structured this way as the main difficulty of IATI is the name inconsistencies. This should be manually verified.
 
--   **Name processing**: Maintain and version **correspondence tables** for (a) publisher ↔ transaction_provider, (b) IATI ↔ FTS donor names, (c) recipients. Manual checks are expected and incremental (country-by-country). You can use the table here to look for correspondence names and update the tables accordingly [`https://airtable.com/appXKfSrXdPPrtInZ/pagMeJ143y7rJufo1`](https://airtable.com/appXKfSrXdPPrtInZ/pagMeJ143y7rJufo1){.uri}. Alternatively, the same list is provided here `data/utilities/fts_iati_orgs.csv`.
+-   **Name processing**: Maintain and version **correspondence tables** for (a) publisher ↔ transaction_provider, (b) IATI ↔ FTS donor names, (c) recipients. Manual checks are expected and incremental (country-by-country). You can use the table here to look for correspondence names and update the tables accordingly [`https://airtable.com/appXKfSrXdPPrtInZ/pagMeJ143y7rJufo1`](https://airtable.com/appXKfSrXdPPrtInZ/pagMeJ143y7rJufo1){.uri}. Alternatively, the same list is provided here `data/utilities/fts_iati_orgs.csv`. *The first check on IATI publishers is necessary and pivotal to make sure the actual data publisher is the transaction provider.*
 
--   **Flags**: Keyword-based flags on titles/descriptions for humanitarian/EiE dimensions. Keep the keyword lists in `config/flags.yml` and version them.\
+-   **Flags**: Keyword-based flags on titles/descriptions for humanitarian/EiE dimensions. Keep the keyword lists in `config/flags.yml` and version them.
 
--   **Duplicates**: Maintain the log of duplicates in `data/utilities/manual_flags.xlsx` providing per country sheet (named after ISO2 code) the necessary information.
+-   **Duplicates**: Maintain the log of duplicates in `data/utilities/manual_flags.xlsx` providing per country sheet (named after ISO2 code) the necessary information. If the code is run with the alternative merging, this duplicates is skipped, as automatically ECW transactions in FTS are filtered out.
 
--   The latest stage involves the **merging of the two datasets** and the output is to be used with the analysis flow.
+-   **Dubious:** When a bilateral or multilateral organization is present both as source organization and destination organization in the same year and country, the transactions are flagged as `Dubious == "Yes"`, as there might be the possibility of double reporting.
+
+-   The latest stage involves the **merging of the two clean datasets** and the output is to be used with the analysis flow.
 
 -   The **analysis flow** provides tables ready to be manually imported in Flourish.\
 
@@ -291,9 +305,13 @@ The code is structured to pause when manual verification and updates are needed.
 -   **FTS v1** limitations and possible framework changes require maintenance.
 -   **IATI** sector codes may be non‑DAC; those records are currently excluded unless you add custom mappings.
 -   **Manual steps** are necessary for high-quality name harmonization and duplicate decisions; keep correspondence tables under version control and treat them as **data assets**.
--   **Performance**: Large multi-country, multi-year extracts are computationally heavy; expect long runtimes on first ingestion.
--   **Currency**: IATI `transaction_breakdown` uses fluctuating USD rates; comparisons across different extraction dates may shift—document extraction dates in metadata.
--   **Dates**: When querying SQL, use `"YYYY-MM-DD"` format strictly.
+-   **Performance**: Large multi-country, multi-year extracts are computationally heavy; expect long runtimes on first ingestion. As of October 2025, the direct extraction from IatiTables on Datasette does not work and the necessary flow starts from the extraction from a locally downloaded db.
+-   **Currency**: IATI `transaction_breakdown` uses fluctuating USD rates; comparisons across different extraction dates may shift document extraction dates in metadata.
+-   **Dates**: When querying SQL, use `"YYYY-MM-DD"` format strictly. This has been unstable between past extractions. The new code tries to automatically detect date formats for cleaning.
+
+### Runtime of local db extraction
+
+Running the local db extraction takes approx 1h on a Windows 64bit, 16GB RAM, i7 machine.
 
 ## 📚 Citation & Context
 
