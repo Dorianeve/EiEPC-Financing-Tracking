@@ -4,7 +4,7 @@ fts <- read.csv("data/clean/fts.csv", encoding = "UTF-8")
 
 list <- read.csv("data/utilities/revised list/list_fts_revised_names_type.csv", encoding = "UTF-8")
 
-list %<>%
+list %<>% 
   select(-c(SourceOrganization))
 
 fts %<>%

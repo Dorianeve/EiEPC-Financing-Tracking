@@ -21,3 +21,6 @@ load_libraries <- function(packages) {
 
 # Load all required packages
 load_libraries(required_packages)
+
+Sys.setlocale("LC_CTYPE", "en_US.UTF-8")
+

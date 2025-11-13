@@ -6,6 +6,7 @@ source("requirements/normalize_to_iso.R")
 source("config/extraction_config.yml")
 
 
+
 # prep saving env
 # Define the directory path
 dir_path <- "data/clean/"
