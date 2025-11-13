@@ -116,6 +116,10 @@ These steps mirror the protocol’s stages and constraints (e.g., FTS API v1 lim
 
 ## 🛠️ Installation
 
+#### Requirements
+
+The repository is optimized to be run on RStudio.
+
 #### Prep steps
 
 Download the whole repo on the local system.

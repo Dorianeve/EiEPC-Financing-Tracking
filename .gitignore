@@ -8,6 +8,7 @@
 *.csv
 *.xlsx
 *.sqlite
+*.html
 
 # ...but keep those in data/utilities/ (and its subfolders)
 !data/utilities/**/*.csv
